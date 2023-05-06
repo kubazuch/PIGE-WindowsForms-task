@@ -3,6 +3,5 @@ This project was made for Programming in Graphical Environment labs on the 4th s
 
 The task was to recreate a model application in WindowsForms.
 
-![image](https://user-images.githubusercontent.com/12480678/236593255-7d71b5cd-c295-4da5-8504-b7b42f968eee.png)
-![image](https://user-images.githubusercontent.com/12480678/236593268-2bb138a0-7fa6-47c5-85f2-2fe5bab89f0b.png)
-![image](https://user-images.githubusercontent.com/12480678/236593312-d385b663-fdd0-4759-bc79-f2e259d74116.png)
+![image](https://user-images.githubusercontent.com/12480678/236594282-e7363e21-8f4f-445e-9cbd-b00666c5e7a0.png)
+![image](https://user-images.githubusercontent.com/12480678/236594321-55eaa2cd-40a5-4f41-99d0-97809d3f47b1.png)
