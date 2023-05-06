@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<h4>Windows Forms - część laboratoryjna</h4>
+	<h2>Disk Space Analyzer</h2>
+	<ul>
+		<li><a href="DiskSpaceAnalyzer.exe">Przykładowa aplikacja</a></li>
+		<li>Opis zadania:<br\>
+			Zadanie polega na stworzeniu aplikacji desktopowej w technologii WinForms, która pozwala na przeanalizowanie zajętości miejsca na dysku.<br/>
+			Wymagania:
+			<ul>
+				<li>Okno główne:
+					<ul>
+						<li>Minimalny rozmiar okna 800x450</li>
+						<li>Menu główne, sekcja File zawiera trzy pozycje: Select, Cancel (nieaktywne) oraz Exit, oraz sekcja Help z pozycją About</li>
+						<li>Okno podzielone na dwie części za pomocą splitera, po lewej stronie znajduje się TreeView oraz przycisk Select, prawa strona pusta</li>
+						<li>Przycisk Select oraz pozycja Select w menu otwierają okno dialogowe</li>
+					</ul>
+				</li>
+				<li>Okno dialogowe wyboru dysków/folderu:
+					<ul>
+						<li>Minimalny rozmiar okna 500x300, pojawia się na środku okna głównego jako okno modalne</li>
+						<li>Zawiera trzy sekcje: All Local Drives, Individual Drives oraz A Folder.</li>
+						<li>Sekcja Individual Drives zawiera listę dostępnych dysków wraz z informacją o ich rozmiarze, wolnym miejscu oraz procentowym zajęciu dysku</li>
+						<li>Kolumny automatycznie dostosowują swoją szerokość do rozmiaru danych w wierszach</li>
+						<li>Sekcja A Folder pozwala na wygranie dowolnego folderu</li>
+						<li>Wygranie/zaznaczenie kontrolek z danej sekcji powoduje wybranie/zaznaczenie danej sekcji</li>
+						<li>Możliwość nawigacji po sekcjach za pomocą skrótów: Alt+A, Alt+I oraz Alt+F</li>
+					</ul>
+				</li>
+				<li>TreeView:
+					<ul>
+						<li>Wyświetla strukturę folderów na dysku</li>
+						<li>Domyślnie wyświetlane są wszystkie dyski</li>
+						<li>Po wybraniu dysków/folderu z okna dialogowego ładowane są do TreeView wybrane dyski/foldery</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>Wskazówki:
+			<ul>
+				<li>TreeView, ListView, SplitContainer</li>
+				<li>DriveInfo.GetDrives()</li>
+				<li>Directory.GetDirectories()</li>
+				<li>FormStartPosition.CenterParent</li>
+				<li>FolderBrowserDialog</li>
+				<li>TabOrder</li>
+				<li>Lazy loading with TreeView.AfterExpand, derived from TreeNode</li>
+			</ul>
+		</li>
+		<li><i>Uwaga: W przypadku niejasności program musi być zgodny z zachowanie i wyglądem aplikacji przykładowej, jednak nie należy wzorować się na potencjalnych błędach.</i></li>
+	</ul>
+	<ul>
+		<li>Punktacja:
+			<ul>
+				<li>Poprawne nazewnictwo klas, tytuł okna głównego, menu główne i skróty (w tym poprawnie działająca nawigacja po menu): 1 punkt</li>
+				<li>Poprawny wygląd i układ okna głównego - spliter, TreeView i status bar - poprawne skalowanie okna: 2 punkty</li>
+				<li>Poprawny układ okna dialogowego do wyboru dysków/folderów: 2 punkty</li>
+				<li>Możliwość wybierania folderu w oknie dialogowym: 1 punkt</li>
+				<li>Listowanie dysków wraz z informacją o ich pojemności w oknie dialogowym: 2 punkty</li>
+				<li>Poprawne zwracanie wybranych dysków/folderu z okna dialogowego: 1 punkt</li>
+				<li>Wyświetlanie zawartości w TreeView:
+					<ul>
+					<li>Wyświetlanie głównych węzłów: 1 punkt</li>
+					<li>Poprawne wyświetlanie hierarchii folderów: 2 punkty</li>
+					</ul>
+				</li>
+				<li><i>Uwaga: Nie ma możliwości uzyskania punktów za niepełną funkcjonalność.</i></li>
+			</ul>
+		</li>
+	</ul>
+	<h4>Windows Forms - część domowa</h4>
+	<ul>
+		<li>Okno główne:
+			<ul>
+				<li>Po prawej stornie znajdują się zakładki z widokami: Details oraz Charts</li>
+				<li>Widok Details zawiera informację o zaznaczonej w TreeView ścieżce</li>
+				<li>Widok Charts zawiera wykresy z ilością plików danego typu oraz zajmowanym przez nich rozmiarem</li>
+				<li>Wykresy są rozmieszczone w dwóch kolumnach i wypełniają całą dostępną przestrzeń</li>
+				<li>Zliczanie plików odbywa się automatycznie w tle za pomocą BackgroundWorkers po uruchomieniu aplikacji lub po wyborze dysków/folderu</li>
+				<li>Przycisk Cancel w menu pozwala na przerwanie tego procesu</li>
+				<li>W pasku statusu znajduje się pasek postępu (kontrolka ProgressBar) pokazująca procentowy postęp obliczeń - należy założyć, że czas obliczeń podfolderu jest równy dla wszystkich podfolderów, np. dla każdego folderu dysku C zakładamy, że postęp jest równy liczbie 1/n, gdzie n to liczba podfolderów.</li>
+				<li>Oprócz folderów również pliki wyświetlają się w TreeView, jeżeli folder zawiera więcej niż trzy pliki, pliki grupowane są w węźle &ltFile&gt</li>
+			</ul>
+		</li>
+		<li>Okno dialogowe wyboru dysków/folderu:
+			<ul>
+				<li>Auto-uzupełnienie ścieżek</li>
+				<li>Walidacja czy podana ścieżka istnieje/jest poprawna, jeśli nie to należy zmienić kolor tekstu na czerwony</li>
+			</ul>
+		</li>
+		<li>Kontrolka z wykresami:
+			<ul>
+				<li>Niestandardowa kontrolka użytkownika, cała jej zawartość jest rysowana przy użyciu modułu Graphics</li>
+				<li>Trzy tryby wyświetlania danych: wykres kołowy, wykres słupkowy oraz wykres słupkowy ze skalą logarytmiczną</li>
+				<li>Wyświetlane jest co najwyżej 10 pozycji, jeżeli jest więcej to są one grupowane do kategorii Others</li>
+				<li>Do wybierania różnych od siebie kolorów użyj modelu HSV</li>
+				<li>Nad kontrolą znajduje się pole wyboru z typem wykresu</li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li>Punktacja:
+			<ul>
+				<li>Kolumna w oknie dialogowym z wizualną reprezentacją zajętości dysku (progress bar): 2 punkty</li>
+				<li>Walidacja i auto-uzupełnianie dla folderów w oknie dialogowym: 1 punkt</li>
+				<li>Zliczanie folderów/plików i ich rozmiarów za pomocą background workera: 4 punkty</li>
+				<li>Niestandardowa kontrolka użytkownika do rysowania wykresów: 3 punkty, po jednym punkcie za każdy z typów wykresu</li>
+				<li>Węzeł grupujący pliki w TreeView: 2 punkty</li>
+				<li><i>Uwaga: Nie ma możliwości uzyskania punktów za niepełną funkcjonalność.</i></li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
