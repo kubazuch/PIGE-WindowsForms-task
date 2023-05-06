@@ -204,7 +204,7 @@ namespace DiskSpaceAnalyzer
 
             var data = first ? Stat.Counts : Stat.Sizes;
 
-            float chartMargin = drawArea.Width / 4.0f;
+            float chartMargin = drawArea.Width / 3.0f;
 
             float chartWidth = drawArea.Width - chartMargin;
             float chartHeight = drawArea.Height;
@@ -218,7 +218,7 @@ namespace DiskSpaceAnalyzer
             float boxMargin = boxHeightMargin / 4;
             float boxHeight = boxHeightMargin - 2 * boxMargin;
             float smallMargin = chartMargin / 8;
-            float boxWidth = chartMargin / 2 - smallMargin;
+            float boxWidth = chartMargin / 3 - smallMargin;
 
             float startAngle = 0;
             int i = -1;
@@ -234,8 +234,8 @@ namespace DiskSpaceAnalyzer
                 g.FillRectangle(brush, drawArea.X + chartWidth + smallMargin, drawArea.Y + boxMargin + i * boxHeightMargin, boxWidth, boxHeight);
                 g.DrawRectangle(Pens.Black, drawArea.X + chartWidth + smallMargin, drawArea.Y + boxMargin + i * boxHeightMargin, boxWidth, boxHeight);
 
-                g.DrawString(item.Key, Font, Brushes.Black,
-                    new RectangleF(drawArea.X + chartWidth + boxWidth + 2*smallMargin, drawArea.Y + boxMargin + i * boxHeightMargin, boxWidth, boxHeight), pieFormat);
+                g.DrawString($"{item.Key} - {(first ? item.Value.ToScientific(0) : Utils.FormatFileSize(item.Value))}", Font, Brushes.Black,
+                    new RectangleF(drawArea.X + chartWidth + boxWidth + smallMargin + 20, drawArea.Y + boxMargin + i * boxHeightMargin, 2*boxWidth, boxHeight), pieFormat);
             }
         }
     }
